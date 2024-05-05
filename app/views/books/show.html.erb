@@ -1,2 +1,15 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div>
+  <%= flash[:notice] %>
+</div>
+
+<h2>Book detail</h2>
+<p><%= image_tag @user.get_profile_image(100,100) %></p>
+<p><%= @user.name %></p>
+<p><%= @book.title %></p>
+<p><%= @book.body %></p>
+
+<% if @book.user == current_user %>
+  <%= link_to "Edit", edit_book_path %>
+  <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %>
+<% end %>
+
